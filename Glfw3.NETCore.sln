@@ -1,5 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{77C5EAFB-F3FC-4B3C-815A-9B19EF3E602B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glfw3", "Glfw3\Glfw3.csproj", "{491D7908-714A-4FE8-9DFB-23A6F043F910}"
 EndProject
 Global
