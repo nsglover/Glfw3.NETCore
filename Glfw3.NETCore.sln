@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glfw3", "Glfw3\Glfw3.csproj", "{491D7908-714A-4FE8-9DFB-23A6F043F910}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77C5EAFB-F3FC-4B3C-815A-9B19EF3E602B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C5EAFB-F3FC-4B3C-815A-9B19EF3E602B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C5EAFB-F3FC-4B3C-815A-9B19EF3E602B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C5EAFB-F3FC-4B3C-815A-9B19EF3E602B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491D7908-714A-4FE8-9DFB-23A6F043F910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491D7908-714A-4FE8-9DFB-23A6F043F910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491D7908-714A-4FE8-9DFB-23A6F043F910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491D7908-714A-4FE8-9DFB-23A6F043F910}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
