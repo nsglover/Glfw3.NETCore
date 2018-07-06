@@ -3,7 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 // ReSharper disable UnusedMember.Global
 
-namespace Glfw3
+// ReSharper disable once CheckNamespace
+namespace glfw3
 {
     public static class Glfw
     {

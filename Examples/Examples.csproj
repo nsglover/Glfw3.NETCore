@@ -4,6 +4,6 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Glfw3\Glfw3.csproj" />
+    <ProjectReference Include="..\Glfw3.NETCore\Glfw3.NETCore.csproj" />
   </ItemGroup>
 </Project>

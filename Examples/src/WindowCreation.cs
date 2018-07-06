@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using Glfw3;
+using glfw3;
 
 namespace Examples
 {
