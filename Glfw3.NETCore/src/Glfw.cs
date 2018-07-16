@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+
 // ReSharper disable UnusedMember.Global
 
 // ReSharper disable once CheckNamespace
@@ -1832,7 +1833,7 @@ namespace glfw3
         public static extern int JoystickPresent(int joy);
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwGetJoystickAxes")]
-        private static extern IntPtr _GetJoystickAxes(int joy, out int count);
+        private static extern unsafe float* _GetJoystickAxes(int joy, out int count);
 
         /// <summary>
         /// <para>This function returns the values of all axes of the specified joystick. Each
@@ -1847,14 +1848,23 @@ namespace glfw3
         /// present.</returns>
         public static float[] GetJoystickAxes(int joy, out int count)
         {
-            var arrayPtr = _GetJoystickAxes(joy, out count);
-            var axes = new float[count];
-            Marshal.Copy(arrayPtr, axes, 0, count);
-            return axes;
+            unsafe
+            {
+                var arrayPtr = _GetJoystickAxes(joy, out count);
+                var axes = new float[count];
+
+                for(int i = 0; i < count; i++)
+                {
+                    axes[i] = *arrayPtr;
+                    arrayPtr++;
+                }
+            
+                return axes;
+            }
         }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwGetJoystickButtons")]
-        private static extern IntPtr _GetJoystickButtons(int joy, out int count);
+        private static extern unsafe byte* _GetJoystickButtons(int joy, out int count);
 
         /// <summary>
         /// <para>This function returns the state of all buttons of the specified joystick.</para>
@@ -1868,10 +1878,19 @@ namespace glfw3
         /// present.</returns>
         public static byte[] GetJoystickButtons(int joy, out int count)
         {
-            var arrayPtr = _GetJoystickButtons(joy, out count);
-            var buttonStates = new byte[count];
-            Marshal.Copy(arrayPtr, buttonStates, 0, count);
-            return buttonStates;
+            unsafe
+            {
+                var arrayPtr = _GetJoystickButtons(joy, out count);
+                var buttonStates = new byte[count];
+
+                for(int i = 0; i < count; i++)
+                {
+                    buttonStates[i] = *arrayPtr;
+                    arrayPtr++;
+                }
+            
+                return buttonStates;
+            }
         }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwGetJoystickName")]
@@ -2098,15 +2117,15 @@ namespace glfw3
             return requiredInstanceExtensions;
         }
 
-//        [DllImport(Glfw3Dll, EntryPoint = "")]
-//        public static extern GLFWvkproc GetInstanceProcAddress(VkInstance instance, const char* procname);
-
-//        [DllImport(Glfw3Dll, EntryPoint = "")]
-//        public static extern int GetPhysicalDevicePresentationSupport(VkInstance instance, VkPhysicalDevice device, uint32_t queuefamily);
-
-//        [DllImport(Glfw3Dll, EntryPoint = "")]
-//        public static extern VkResult CreateWindowSurface(VkInstance instance, IntPtr window,  const VkAllocationCallbacks*
-//            allocator, VkSurfaceKHR* surface);
+//        [DllImport(Glfw3Dll, EntryPoint = "glfwGetInstanceProcAddress")]
+//        public static extern IntPtr GetInstanceProcAddress(Vk.Instance instance, string procname);
+//
+//        [DllImport(Glfw3Dll, EntryPoint = "glfwGetPhysicalDevicePresentationSupport")]
+//        public static extern int GetPhysicalDevicePresentationSupport(Vk.Instance instance, Vk.PhysicalDevice device, uint queuefamily);
+//
+//        [DllImport(Glfw3Dll, EntryPoint = "glfwCreateWindowSurface")]
+//        public static extern Vk.Result CreateWindowSurface(IntPtr instance, IntPtr window, ref Vk.AllocationCallbacks allocator,
+//            out long surface);
 
         #endregion
     }

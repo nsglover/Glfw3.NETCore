@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <Version>1.0.1</Version>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>1.0.2</Version>
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>Glfw3.NETCore</PackageId>
         <Authors>NathanielGlover</Authors>
         <Description>
-            Glfw3.NETCore is an up-to-date set of cross-platform C# bindings for GLFW 3 targeting .NET Core.
+            Glfw3.NETCore is an up-to-date set of cross-platform C# bindings for GLFW 3 targeting .NET Standard 2.0.
         </Description>
         <PackageTags>Glfw;Glfw3;.NET</PackageTags>
         <PackageLicenseUrl>https://github.com/NathanielGlover/Glfw3.NETCore/blob/master/LICENSE</PackageLicenseUrl>
