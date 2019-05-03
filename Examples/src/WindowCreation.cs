@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
+using System.Threading;
 using glfw3;
 
 namespace Examples
@@ -11,12 +10,15 @@ namespace Examples
         {
             Glfw.SetErrorCallback((error, description) => { Console.WriteLine($"GLFW Error {error}: {description}"); });
             Glfw.Init();
-
-            var win = Glfw.CreateWindow(400, 400, "GLFW Window", IntPtr.Zero, IntPtr.Zero);
             
+            var win = Glfw.CreateWindow(400, 400, "GLFW Window", IntPtr.Zero, IntPtr.Zero);
+
             while(Glfw.WindowShouldClose(win) == Glfw.False)
             {
                 Glfw.PollEvents();
+                
+                Thread.Sleep(100);
+                Console.Clear();
             }
         }
     }

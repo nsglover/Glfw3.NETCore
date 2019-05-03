@@ -12,7 +12,7 @@ namespace glfw3
 #if MACOS
         private const string Glfw3Dll = "libglfw.dylib";
 #elif LINUX
-        private const string Glfw3Dll = "libglfw.so.3.2";
+        private const string Glfw3Dll = "libglfw.so.3.3";
 #elif WINDOWS
         private const string Glfw3Dll = "glfw3.dll";
 #endif
