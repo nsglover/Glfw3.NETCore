@@ -10,7 +10,7 @@ namespace glfw3
     public static class Glfw
     {
 #if MACOS
-        private const string Glfw3Dll = "libglfw.3.3.dylib";
+        private const string Glfw3Dll = "libglfw.dylib";
 #elif LINUX
         private const string Glfw3Dll = "libglfw.so.3.3";
 #elif WINDOWS
