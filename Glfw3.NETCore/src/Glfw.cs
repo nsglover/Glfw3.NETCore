@@ -10,57 +10,39 @@ namespace glfw3
     public static class Glfw
     {
 #if MACOS
-        private const string Glfw3Dll = "libglfw.dylib";
+        private const string Glfw3Dll = "libglfw.3.3.dylib";
 #elif LINUX
         private const string Glfw3Dll = "libglfw.so.3.3";
 #elif WINDOWS
         private const string Glfw3Dll = "glfw3.dll";
 #endif
 
-        #region Vulkan
+        #region Enum
 
-        public const int VkSuccess = 0;
-        public const int VkNotReady = 1;
-        public const int VkTimeout = 2;
-        public const int VkEventSet = 3;
-        public const int VkEventReset = 4;
-        public const int VkIncomplete = 5;
-        public const int VkErrorOutOfHostMemory = -1;
-        public const int VkErrorOutOfDeviceMemory = -2;
-        public const int VkErrorInitializationFailed = -3;
-        public const int VkErrorDeviceLost = -4;
-        public const int VkErrorMemoryMapFailed = -5;
-        public const int VkErrorLayerNotPresent = -6;
-        public const int VkErrorExtensionNotPresent = -7;
-        public const int VkErrorFeatureNotPresent = -8;
-        public const int VkErrorIncompatibleDriver = -9;
-        public const int VkErrorTooManyObjects = -10;
-        public const int VkErrorFormatNotSupported = -11;
-        public const int VkErrorFragmentedPool = -12;
-        public const int VkErrorSurfaceLostKhr = -1000000000;
-        public const int VkErrorNativeWindowInUseKhr = -1000000001;
-        public const int VkSuboptimalKhr = 1000001003;
-        public const int VkErrorOutOfDateKhr = -1000001004;
-        public const int VkErrorIncompatibleDisplayKhr = -1000003001;
-        public const int VkErrorValidationFailedExt = -1000011001;
-        public const int VkErrorInvalidShaderNv = -1000012000;
-        public const int VkErrorOutOfPoolMemoryKhr = -1000069000;
-        public const int VkResultBeginRange = -12;
-        public const int VkResultEndRange = 5;
-        public const int VkResultRangeSize = 18;
-        public const int VkResultMaxEnum = 2147483647;
-
-        #endregion
-
-        #region Key
-
+        public const int VersionMajor = 3;
+        public const int VersionMinor = 3;
+        public const int VersionRevision = 0;
+        public const int True = 1;
+        public const int False = 0;
+        public const int Release = 0;
+        public const int Press = 1;
+        public const int Repeat = 2;
+        public const byte HatCentered = 0;
+        public const byte HatUp = 1;
+        public const byte HatRight = 2;
+        public const byte HatDown = 4;
+        public const byte HatLeft = 8;
+        public const byte HatRightUp = HatRight | HatUp;
+        public const byte HatRightDown = HatRight | HatDown;
+        public const byte HatLeftUp = HatLeft | HatUp;
+        public const byte HatLeftDown = HatLeft | HatDown;
         public const int KeyUnknown = -1;
         public const int KeySpace = 32;
-        public const int KeyApostrophe = 39;
-        public const int KeyComma = 44;
-        public const int KeyMinus = 45;
-        public const int KeyPeriod = 46;
-        public const int KeySlash = 47;
+        public const int KeyApostrophe = 39; /* ' */
+        public const int KeyComma = 44; /* , */
+        public const int KeyMinus = 45; /* - */
+        public const int KeyPeriod = 46; /* . */
+        public const int KeySlash = 47; /* / */
         public const int Key0 = 48;
         public const int Key1 = 49;
         public const int Key2 = 50;
@@ -71,8 +53,8 @@ namespace glfw3
         public const int Key7 = 55;
         public const int Key8 = 56;
         public const int Key9 = 57;
-        public const int KeySemicolon = 59;
-        public const int KeyEqual = 61;
+        public const int KeySemicolon = 59; /* ; */
+        public const int KeyEqual = 61; /* = */
         public const int KeyA = 65;
         public const int KeyB = 66;
         public const int KeyC = 67;
@@ -99,12 +81,12 @@ namespace glfw3
         public const int KeyX = 88;
         public const int KeyY = 89;
         public const int KeyZ = 90;
-        public const int KeyLeftBracket = 91;
-        public const int KeyBackslash = 92;
-        public const int KeyRightBracket = 93;
-        public const int KeyGraveAccent = 96;
-        public const int KeyWorld1 = 161;
-        public const int KeyWorld2 = 162;
+        public const int KeyLeftBracket = 91; /* [ */
+        public const int KeyBackslash = 92; /* \ */
+        public const int KeyRightBracket = 93; /* ] */
+        public const int KeyGraveAccent = 96; /* ` */
+        public const int KeyWorld1 = 161; /* non-US#1 */
+        public const int KeyWorld2 = 162; /* non-US#2 */
         public const int KeyEscape = 256;
         public const int KeyEnter = 257;
         public const int KeyTab = 258;
@@ -175,29 +157,25 @@ namespace glfw3
         public const int KeyRightAlt = 346;
         public const int KeyRightSuper = 347;
         public const int KeyMenu = 348;
-        public const int KeyLast = 348;
-
-        #endregion
-
-        #region Mouse
-
-        public const int Mouse1 = 0;
-        public const int Mouse2 = 1;
-        public const int Mouse3 = 2;
-        public const int Mouse4 = 3;
-        public const int Mouse5 = 4;
-        public const int Mouse6 = 5;
-        public const int Mouse7 = 6;
-        public const int Mouse8 = 7;
-        public const int MouseLast = Mouse8;
-        public const int Left = Mouse1;
-        public const int Right = Mouse2;
-        public const int Middle = Mouse3;
-
-        #endregion
-
-        #region Joystick
-
+        public const int KeyLast = KeyMenu;
+        public const int ModShift = 0x0001;
+        public const int ModControl = 0x0002;
+        public const int ModAlt = 0x0004;
+        public const int ModSuper = 0x0008;
+        public const int ModCapsLock = 0x0010;
+        public const int ModNumLock = 0x0020;
+        public const int MouseButton1 = 0;
+        public const int MouseButton2 = 1;
+        public const int MouseButton3 = 2;
+        public const int MouseButton4 = 3;
+        public const int MouseButton5 = 4;
+        public const int MouseButton6 = 5;
+        public const int MouseButton7 = 6;
+        public const int MouseButton8 = 7;
+        public const int MouseButtonLast = MouseButton8;
+        public const int MouseButtonLeft = MouseButton1;
+        public const int MouseButtonRight = MouseButton2;
+        public const int MouseButtonMiddle = MouseButton3;
         public const int Joystick1 = 0;
         public const int Joystick2 = 1;
         public const int Joystick3 = 2;
@@ -215,106 +193,124 @@ namespace glfw3
         public const int Joystick15 = 14;
         public const int Joystick16 = 15;
         public const int JoystickLast = Joystick16;
-
-        #endregion
-
-        #region Error
-
-        public const int ErrorNotInitialized = 65537;
-        public const int ErrorNoCurrentContext = 65538;
-        public const int ErrorInvalidEnum = 65539;
-        public const int ErrorInvalidValue = 65540;
-        public const int ErrorOutOfMemory = 65541;
-        public const int ErrorApiUnavailable = 65542;
-        public const int ErrorVersionUnavailable = 65543;
-        public const int ErrorPlatformError = 65544;
-        public const int ErrorFormatUnavailable = 65545;
-        public const int ErrorNoWindowContext = 65546;
-
-        #endregion
-
-        #region Key Mods
-
-        public const int ModShift = 1;
-        public const int ModControl = 2;
-        public const int ModAlt = 4;
-        public const int ModSuper = 8;
-
-        #endregion
-
-        #region State
-
-        public const int True = 1;
-        public const int False = 0;
-        public const int Release = 0;
-        public const int Press = 1;
-        public const int Repeat = 2;
-        public const int Focused = 131073;
-        public const int Iconified = 131074;
-        public const int Resizable = 131075;
-        public const int Visible = 131076;
-        public const int Decorated = 131077;
-        public const int AutoIconify = 131078;
-        public const int Floating = 131079;
-        public const int Maximized = 131080;
-        public const int RedBits = 135169;
-        public const int GreenBits = 135170;
-        public const int BlueBits = 135171;
-        public const int AlphaBits = 135172;
-        public const int DepthBits = 135173;
-        public const int StencilBits = 135174;
-        public const int AccumRedBits = 135175;
-        public const int AccumGreenBits = 135176;
-        public const int AccumBlueBits = 135177;
-        public const int AccumAlphaBits = 135178;
-        public const int AuxBuffers = 135179;
-        public const int Stereo = 135180;
-        public const int Samples = 135181;
-        public const int SrgbCapable = 135182;
-        public const int RefreshRate = 135183;
-        public const int Doublebuffer = 135184;
-        public const int ClientApi = 139265;
-        public const int ContextVersionMajor = 139266;
-        public const int ContextVersionMinor = 139267;
-        public const int ContextRevision = 139268;
-        public const int ContextRobustness = 139269;
-        public const int OpenglForwardCompat = 139270;
-        public const int OpenglDebugContext = 139271;
-        public const int OpenglProfile = 139272;
-        public const int ContextReleaseBehavior = 139273;
-        public const int ContextNoError = 139274;
-        public const int ContextCreationApi = 139275;
+        public const int GamepadButtonA = 0;
+        public const int GamepadButtonB = 1;
+        public const int GamepadButtonX = 2;
+        public const int GamepadButtonY = 3;
+        public const int GamepadButtonLeftBumper = 4;
+        public const int GamepadButtonRightBumper = 5;
+        public const int GamepadButtonBack = 6;
+        public const int GamepadButtonStart = 7;
+        public const int GamepadButtonGuide = 8;
+        public const int GamepadButtonLeftThumb = 9;
+        public const int GamepadButtonRightThumb = 10;
+        public const int GamepadButtonDpadUp = 11;
+        public const int GamepadButtonDpadRight = 12;
+        public const int GamepadButtonDpadDown = 13;
+        public const int GamepadButtonDpadLeft = 14;
+        public const int GamepadButtonLast = GamepadButtonDpadLeft;
+        public const int GamepadButtonCross = GamepadButtonA;
+        public const int GamepadButtonCircle = GamepadButtonB;
+        public const int GamepadButtonSquare = GamepadButtonX;
+        public const int GamepadButtonTriangle = GamepadButtonY;
+        public const int GamepadAxisLeftX = 0;
+        public const int GamepadAxisLeftY = 1;
+        public const int GamepadAxisRightX = 2;
+        public const int GamepadAxisRightY = 3;
+        public const int GamepadAxisLeftTrigger = 4;
+        public const int GamepadAxisRightTrigger = 5;
+        public const int GamepadAxisLast = GamepadAxisRightTrigger;
+        public const int NoError = 0;
+        public const int NotInitialized = 0x00010001;
+        public const int NoCurrentContext = 0x00010002;
+        public const int InvalidEnum = 0x00010003;
+        public const int InvalidValue = 0x00010004;
+        public const int OutOfMemory = 0x00010005;
+        public const int ApiUnavailable = 0x00010006;
+        public const int VersionUnavailable = 0x00010007;
+        public const int PlatformError = 0x00010008;
+        public const int FormatUnavailable = 0x00010009;
+        public const int NoWindowContext = 0x0001000A;
+        public const int Focused = 0x00020001;
+        public const int Iconified = 0x00020002;
+        public const int Resizable = 0x00020003;
+        public const int Visible = 0x00020004;
+        public const int Decorated = 0x00020005;
+        public const int AutoIconify = 0x00020006;
+        public const int Floating = 0x00020007;
+        public const int Maximized = 0x00020008;
+        public const int CenterCursor = 0x00020009;
+        public const int TransparentFramebuffer = 0x0002000A;
+        public const int Hovered = 0x0002000B;
+        public const int FocusOnShow = 0x0002000C;
+        public const int RedBits = 0x00021001;
+        public const int GreenBits = 0x00021002;
+        public const int BlueBits = 0x00021003;
+        public const int AlphaBits = 0x00021004;
+        public const int DepthBits = 0x00021005;
+        public const int StencilBits = 0x00021006;
+        public const int AccumRedBits = 0x00021007;
+        public const int AccumGreenBits = 0x00021008;
+        public const int AccumBlueBits = 0x00021009;
+        public const int AccumAlphaBits = 0x0002100A;
+        public const int AuxBuffers = 0x0002100B;
+        public const int Stereo = 0x0002100C;
+        public const int Samples = 0x0002100D;
+        public const int SrgbCapable = 0x0002100E;
+        public const int RefreshRate = 0x0002100F;
+        public const int Doublebuffer = 0x00021010;
+        public const int ClientApi = 0x00022001;
+        public const int ContextVersionMajor = 0x00022002;
+        public const int ContextVersionMinor = 0x00022003;
+        public const int ContextRevision = 0x00022004;
+        public const int ContextRobustness = 0x00022005;
+        public const int OpenglForwardCompat = 0x00022006;
+        public const int OpenglDebugContext = 0x00022007;
+        public const int OpenglProfile = 0x00022008;
+        public const int ContextReleaseBehavior = 0x00022009;
+        public const int ContextNoError = 0x0002200A;
+        public const int ContextCreationApi = 0x0002200B;
+        public const int ScaleToMonitor = 0x0002200C;
+        public const int CocoaRetinaFramebuffer = 0x00023001;
+        public const int CocoaFrameName = 0x00023002;
+        public const int CocoaGraphicsSwitching = 0x00023003;
+        public const int X11ClassName = 0x00024001;
+        public const int X11InstanceName = 0x00024002;
         public const int NoApi = 0;
-        public const int OpenglApi = 196609;
-        public const int OpenglEsApi = 196610;
+        public const int OpenglApi = 0x00030001;
+        public const int OpenglEsApi = 0x00030002;
         public const int NoRobustness = 0;
-        public const int NoResetNotification = 200705;
-        public const int LoseContextOnReset = 200706;
+        public const int NoResetNotification = 0x00031001;
+        public const int LoseContextOnReset = 0x00031002;
         public const int OpenglAnyProfile = 0;
-        public const int OpenglCoreProfile = 204801;
-        public const int OpenglCompatProfile = 204802;
-        public const int Cursor = 208897;
-        public const int StickyKeys = 208898;
-        public const int StickyMouseButtons = 208899;
-        public const int CursorNormal = 212993;
-        public const int CursorHidden = 212994;
-        public const int CursorDisabled = 212995;
+        public const int OpenglCoreProfile = 0x00032001;
+        public const int OpenglCompatProfile = 0x00032002;
+        public const int Cursor = 0x00033001;
+        public const int StickyKeys = 0x00033002;
+        public const int StickyMouseButtons = 0x00033003;
+        public const int LockKeyMods = 0x00033004;
+        public const int RawMouseMotion = 0x00033005;
+        public const int CursorNormal = 0x00034001;
+        public const int CursorHidden = 0x00034002;
+        public const int CursorDisabled = 0x00034003;
         public const int AnyReleaseBehavior = 0;
-        public const int ReleaseBehaviorFlush = 217089;
-        public const int ReleaseBehaviorNone = 217090;
-        public const int NativeContextApi = 221185;
-        public const int EglContextApi = 221186;
-        public const int Connected = 262145;
-        public const int Disconnected = 262146;
+        public const int ReleaseBehaviorFlush = 0x00035001;
+        public const int ReleaseBehaviorNone = 0x00035002;
+        public const int NativeContextApi = 0x00036001;
+        public const int EglContextApi = 0x00036002;
+        public const int OsmesaContextApi = 0x00036003;
+        public const int ArrowCursor = 0x00036001;
+        public const int IbeamCursor = 0x00036002;
+        public const int CrosshairCursor = 0x00036003;
+        public const int HandCursor = 0x00036004;
+        public const int HresizeCursor = 0x00036005;
+        public const int VresizeCursor = 0x00036006;
+        public const int Connected = 0x00040001;
+        public const int Disconnected = 0x00040002;
+        public const int JoystickHatButtons = 0x00050001;
+        public const int CocoaChdirResources = 0x00051001;
+        public const int CocoaMenubar = 0x00051002;
         public const int DontCare = -1;
-
-        #endregion
-
-        #region Version
-
-        public const int VersionMajor = 3;
-        public const int VersionMinor = 2;
-        public const int VersionRevision = 1;
 
         #endregion
 
@@ -448,8 +444,9 @@ namespace glfw3
         /// Bit field describing which [modifier keys](
         /// held down.
         /// </param>
+        [Obsolete]
         public delegate void CharModsFun(IntPtr window, uint codepoint, int mods);
-        
+
         private unsafe delegate void UnmanagedDropFun(IntPtr window, int count, sbyte** paths);
 
         /// <summary>  This is the function signature for file drop callbacks.</summary>
@@ -470,6 +467,10 @@ namespace glfw3
         /// <param name="joy">The joystick that was connected or disconnected.</param>
         /// <param name="connectionEvent">One of `GLFW_CONNECTED` or `GLFW_DISCONNECTED`.</param>
         public delegate void JoystickFun(int joy, int connectionEvent);
+
+        public delegate void WindowMaximizeFun(IntPtr window, int maximized);
+
+        public delegate void WindowContentScaleFun(IntPtr window, float xscale, float yscale);
 
         #endregion
 
@@ -525,14 +526,34 @@ namespace glfw3
         [StructLayout(LayoutKind.Sequential)]
         public struct Image
         {
-            public int Width;
-            public int Height;
-            public byte[] Pixels;
+            public readonly int Width;
+            public readonly int Height;
+            public readonly byte[] Pixels;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        private unsafe struct UnmanagedGamepadState
+        {
+            internal fixed byte buttons[15];
+            internal fixed float axes[6];
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct GamepadState
+        {
+            public readonly byte[] Buttons;
+            public readonly float[] Axes;
+
+            internal GamepadState(byte[] buttons, float[] axes)
+            {
+                Buttons = buttons;
+                Axes = axes;
+            }
         }
 
         #endregion
 
-        #region Functions
+        #region Functions (3.2.1)
 
         /// <summary>
         /// <para>This function initializes the GLFW library. Before most GLFW functions can be
@@ -1738,6 +1759,7 @@ namespace glfw3
         /// <param name="cbfun">The new callback, or <c>null</c> to remove the currently set
         /// callback.</param>
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetCharModsCallback")]
+        [Obsolete]
         public static extern void SetCharModsCallback(IntPtr window, CharModsFun cbfun);
 
         /// <summary>
@@ -1789,7 +1811,7 @@ namespace glfw3
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetScrollCallback")]
         public static extern void SetScrollCallback(IntPtr window, ScrollFun cbfun);
 
-                [DllImport(Glfw3Dll, EntryPoint = "glfwSetDropCallback")]
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetDropCallback")]
         private static extern void _SetDropCallback(IntPtr window, UnmanagedDropFun cbfun);
 
         private static UnmanagedDropFun currentDropFun;
@@ -1808,7 +1830,7 @@ namespace glfw3
                 void DropFun(IntPtr win, int count, sbyte** paths)
                 {
                     var pathArray = new string[count];
-                    
+
                     for(int i = 0; i < count; i++)
                     {
                         pathArray[i] = new string(*(paths + i));
@@ -1823,7 +1845,7 @@ namespace glfw3
                 _SetDropCallback(window, currentDropFun);
             }
         }
-        
+
         /// <summary>
         /// This function returns whether the specified joystick is present.
         /// </summary>
@@ -1858,7 +1880,7 @@ namespace glfw3
                     axes[i] = *arrayPtr;
                     arrayPtr++;
                 }
-            
+
                 return axes;
             }
         }
@@ -1888,7 +1910,7 @@ namespace glfw3
                     buttonStates[i] = *arrayPtr;
                     arrayPtr++;
                 }
-            
+
                 return buttonStates;
             }
         }
@@ -1934,7 +1956,7 @@ namespace glfw3
         ///  This function returns the contents of the system clipboard, if it contains or is
         ///  convertible to a UTF-8 encoded string. If the clipboard is empty or if its contents
         ///  cannot be converted, <c>null</c> is returned and a
-        ///  <see cref="ErrorFormatUnavailable"/> error is generated.
+        ///  <see cref="FormatUnavailable"/> error is generated.
         /// </summary>
         /// <param name="window">The window that will request the clipboard contents.</param>
         /// <returns>The contents of the clipboard as a UTF-8 encoded string, or <c>null</c> if an
@@ -1994,7 +2016,7 @@ namespace glfw3
         /// context performs this flush by setting the <see cref="ContextReleaseBehavior"/>
         /// window hint.</para>
         /// <para>The specified window must have an OpenGL or OpenGL ES context. Specifying a window
-        /// without a context will generate a <see cref="ErrorNoWindowContext"/> error.</para>
+        /// without a context will generate a <see cref="NoWindowContext"/> error.</para>
         /// </summary>
         /// <param name="window">The window whose context to make current, or
         /// IntPtr.Zero to detach the current context.</param>
@@ -2017,7 +2039,7 @@ namespace glfw3
         /// rendering with OpenGL or OpenGL ES. If the swap interval is greater than zero, the GPU
         /// driver waits the specified number of screen updates before swapping the buffers.</para>
         /// <para>The specified window must have an OpenGL or OpenGL ES context. Specifying a window
-        /// without a context will generate a <see cref="ErrorNoWindowContext"/> error.</para>
+        /// without a context will generate a <see cref="NoWindowContext"/> error.</para>
         /// </summary>
         /// <param name="window">The window whose buffers to swap.</param>
         /// <remarks>
@@ -2040,7 +2062,7 @@ namespace glfw3
         /// <see cref="ExtensionSupported(string)"/>. For more information about swap tearing, see
         /// the extension specifications.</para>
         /// <para>A context must be current on the calling thread. Calling this function without a
-        /// current context will cause a <see cref="ErrorNoCurrentContext"/> error.</para>
+        /// current context will cause a <see cref="NoCurrentContext"/> error.</para>
         /// </summary>
         /// <param name="interval">The minimum number of screen updates to wait for until the
         /// buffers are swapped by <see cref="SwapBuffers(IntPtr)"/>.</param>
@@ -2062,7 +2084,7 @@ namespace glfw3
         /// current OpenGL or OpenGL ES context. It searches both for client API extension and
         /// context creation API extensions.</para>
         /// <para>A context must be current on the calling thread. Calling this function without a
-        /// current context will cause a <see cref="ErrorNoCurrentContext"/> error.</para>
+        /// current context will cause a <see cref="NoCurrentContext"/> error.</para>
         /// <para>As this functions retrieves and searches one or more extension strings each call,
         /// it is recommended that you cache its results if it is going to be used frequently. The
         /// extension strings will not change during the lifetime of a context, so there is no
@@ -2078,7 +2100,7 @@ namespace glfw3
         /// <para>This function returns the address of the specified OpenGL or OpenGL ES core or
         /// extension function, if it is supported by the current context.</para>
         /// <para>A context must be current on the calling thread. Calling this function without a
-        /// current context will cause a <see cref="ErrorNoCurrentContext"/> error.</para>
+        /// current context will cause a <see cref="NoCurrentContext"/> error.</para>
         /// </summary>
         /// <param name="procname">The ASCII encoded name of the function.</param>
         /// <returns>The address of the function, or <c>null</c> if an error occurred.</returns>
@@ -2117,15 +2139,131 @@ namespace glfw3
             return requiredInstanceExtensions;
         }
 
-//        [DllImport(Glfw3Dll, EntryPoint = "glfwGetInstanceProcAddress")]
-//        public static extern IntPtr GetInstanceProcAddress(Vk.Instance instance, string procname);
-//
-//        [DllImport(Glfw3Dll, EntryPoint = "glfwGetPhysicalDevicePresentationSupport")]
-//        public static extern int GetPhysicalDevicePresentationSupport(Vk.Instance instance, Vk.PhysicalDevice device, uint queuefamily);
-//
-//        [DllImport(Glfw3Dll, EntryPoint = "glfwCreateWindowSurface")]
-//        public static extern Vk.Result CreateWindowSurface(IntPtr instance, IntPtr window, ref Vk.AllocationCallbacks allocator,
-//            out long surface);
+        #endregion
+
+        #region Functions (3.3.0)
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwInitHint")]
+        public static extern void InitHint(int hint, int value);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetError")]
+        private static extern int _GetError(out IntPtr description);
+
+        public static int GetError(out string description)
+        {
+            int code = _GetError(out var ptr);
+            description = Marshal.PtrToStringAnsi(ptr);
+            return code;
+        }
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetMonitorWorkarea")]
+        public static extern void GetMonitorWorkarea(IntPtr monitor, out int xpos, out int ypox, out int width, out int height);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetMonitorContentScale")]
+        public static extern void GetMonitorContentScale(IntPtr monitor, out float xscale, out float yscale);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetMonitorUserPointer")]
+        public static extern IntPtr GetMonitorUserPointer(IntPtr monitor);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetMonitorUserPointer")]
+        public static extern void SetMonitorUserPointer(IntPtr monitor, IntPtr pointer);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwWindowHintString")]
+        public static extern void WindowHintString(int hint, string value);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetWindowContentScale")]
+        public static extern void GetWindowContentScale(IntPtr window, out float xscale, out float yscale);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetWindowOpacity")]
+        public static extern float GetWindowOpacity(IntPtr window);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowOpacity")]
+        public static extern void SetWindowOpacity(IntPtr window, float opacity);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwRequestWindowAttention")]
+        public static extern void RequestWindowAttention(IntPtr window);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowAttrib")]
+        public static extern void SetWindowAttrib(IntPtr window, int attrib, int value);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowMaximizeCallback")]
+        public static extern void SetWindowMaximizeCallback(IntPtr window, WindowMaximizeFun cbfun);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowContentScaleCallback")]
+        public static extern void SetWindowContentScaleCallback(IntPtr window, WindowContentScaleFun cbfun);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwRawMouseMotionSupported")]
+        public static extern int RawMouseMotionSupported();
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetKeyScancode")]
+        public static extern int GetKeyScancode(int key);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetJoystickHats")]
+        private static extern IntPtr _GetJoystickHats(int jid, out int count);
+
+        public static byte[] GetJoystickHats(int jid, out int count)
+        {
+            var arrayPtr = _GetJoystickHats(jid, out count);
+            var hats = new byte[count];
+
+            for(int i = 0; i < count; i++)
+            {
+                hats[i] = Marshal.ReadByte(arrayPtr + i);
+            }
+
+            return hats;
+        }
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetJoystickGUID")]
+        private static extern IntPtr _GetJoystickGUID(int jid);
+
+        // ReSharper disable once InconsistentNaming
+        public static string GetJoystickGUID(int jid) => Marshal.PtrToStringAnsi(_GetJoystickGUID(jid));
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetJoystickUserPointer")]
+        public static extern IntPtr GetJoystickUserPointer(int jid);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwSetJoystickUserPointer")]
+        public static extern void SetJoystickUserPointer(int jid, IntPtr pointer);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwJoystickIsGamepad")]
+        public static extern int JoystickIsGamepad(int jid);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwUpdateGamepadMappings")]
+        public static extern int UpdateGamepadMappings(string mappings);
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetGamepadName")]
+        private static extern IntPtr _GetGamepadName(int jid);
+
+        public static string GetGamepadName(int jid) => Marshal.PtrToStringAnsi(_GetGamepadName(jid));
+
+        [DllImport(Glfw3Dll, EntryPoint = "glfwGetGamepadState")]
+        private static extern int _GetGamepadState(int jid, IntPtr state);
+        
+        public static int GetGamepadState(int jid, out GamepadState state)
+        {
+            var managedState = new GamepadState(new byte[15], new float[6]);
+            int success;
+
+            unsafe
+            {
+                var unmanagedState = new UnmanagedGamepadState();
+                success = _GetGamepadState(jid, new IntPtr(&unmanagedState));
+
+                for(int i = 0; i < managedState.Buttons.Length; i++)
+                {
+                    managedState.Buttons[i] = unmanagedState.buttons[i];
+                }
+
+                for(int i = 0; i < managedState.Axes.Length; i++)
+                {
+                    managedState.Axes[i] = unmanagedState.axes[i];
+                }
+            }
+
+            state = managedState;
+            return success;
+        }
 
         #endregion
     }
