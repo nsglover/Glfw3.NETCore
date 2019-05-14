@@ -3,7 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 // ReSharper disable UnusedMember.Global
-
 // ReSharper disable once CheckNamespace
 namespace glfw3
 {
@@ -664,25 +663,81 @@ namespace glfw3
         public static extern IntPtr GetWindowUserPointer(IntPtr window);
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowPosCallback")]
-        public static extern void SetWindowPosCallback(IntPtr window, WindowPosFun cbfun);
+        private static extern void _SetWindowPosCallback(IntPtr window, WindowPosFun cbfun);
+
+        private static WindowPosFun currentWindowPosFun;
+        
+        public static void SetWindowPosCallback(IntPtr window, WindowPosFun cbfun)
+        {
+            currentWindowPosFun = cbfun;
+            _SetWindowPosCallback(window, currentWindowPosFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowSizeCallback")]
-        public static extern void SetWindowSizeCallback(IntPtr window, WindowSizeFun cbfun);
+        private static extern void _SetWindowSizeCallback(IntPtr window, WindowSizeFun cbfun);
+
+        private static WindowSizeFun currentWindowSizeFun;
+
+        public static void SetWindowSizeCallback(IntPtr window, WindowSizeFun cbfun)
+        {
+            currentWindowSizeFun = cbfun;
+            _SetWindowSizeCallback(window, currentWindowSizeFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowCloseCallback")]
-        public static extern void SetWindowCloseCallback(IntPtr window, WindowCloseFun cbfun);
+        private static extern void _SetWindowCloseCallback(IntPtr window, WindowCloseFun cbfun);
+
+        private static WindowCloseFun currentWindowCloseFun;
+
+        public static void SetWindowCloseCallback(IntPtr window, WindowCloseFun cbfun)
+        {
+            currentWindowCloseFun = cbfun;
+            _SetWindowCloseCallback(window, currentWindowCloseFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowRefreshCallback")]
-        public static extern void SetWindowRefreshCallback(IntPtr window, WindowRefreshFun cbfun);
+        private static extern void _SetWindowRefreshCallback(IntPtr window, WindowRefreshFun cbfun);
+
+        private static WindowRefreshFun currentWindowRefreshFun;
+
+        public static void SetWindowRefreshCallback(IntPtr window, WindowRefreshFun cbfun)
+        {
+            currentWindowRefreshFun = cbfun;
+            _SetWindowRefreshCallback(window, currentWindowRefreshFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowFocusCallback")]
-        public static extern void SetWindowFocusCallback(IntPtr window, WindowFocusFun cbfun);
+        private static extern void _SetWindowFocusCallback(IntPtr window, WindowFocusFun cbfun);
+
+        private static WindowFocusFun currentWindowFocusFun;
+
+        public static void SetWindowFocusCallback(IntPtr window, WindowFocusFun cbfun)
+        {
+            currentWindowFocusFun = cbfun;
+            _SetWindowFocusCallback(window, currentWindowFocusFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowIconifyCallback")]
-        public static extern void SetWindowIconifyCallback(IntPtr window, WindowIconifyFun cbfun);
+        private static extern void _SetWindowIconifyCallback(IntPtr window, WindowIconifyFun cbfun);
+
+        private static WindowIconifyFun currentWindowIconifyFun;
+
+        public static void SetWindowIconifyCallback(IntPtr window, WindowIconifyFun cbfun)
+        {
+            currentWindowIconifyFun = cbfun;
+            _SetWindowIconifyCallback(window, currentWindowIconifyFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetFramebufferSizeCallback")]
-        public static extern void SetFramebufferSizeCallback(IntPtr window, FramebufferSizeFun cbfun);
+        private static extern void _SetFramebufferSizeCallback(IntPtr window, FramebufferSizeFun cbfun);
+
+        private static FramebufferSizeFun currentFramebufferSizeFun;
+
+        public static void SetFramebufferSizeCallback(IntPtr window, FramebufferSizeFun cbfun)
+        {
+            currentFramebufferSizeFun = cbfun;
+            _SetFramebufferSizeCallback(window, cbfun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwPollEvents")]
         public static extern void PollEvents();
@@ -744,26 +799,82 @@ namespace glfw3
         public static extern void SetCursor(IntPtr window, IntPtr cursor);
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetKeyCallback")]
-        public static extern void SetKeyCallback(IntPtr window, KeyFun cbfun);
+        private static extern void _SetKeyCallback(IntPtr window, KeyFun cbfun);
+
+        private static KeyFun currentKeyFun;
+
+        public static void SetKeyCallback(IntPtr window, KeyFun cbfun)
+        {
+            currentKeyFun = cbfun;
+            _SetKeyCallback(window, currentKeyFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetCharCallback")]
-        public static extern void SetCharCallback(IntPtr window, CharFun cbfun);
+        private static extern void _SetCharCallback(IntPtr window, CharFun cbfun);
+
+        private static CharFun currentCharFun;
+
+        public static void SetCharCallback(IntPtr window, CharFun cbfun)
+        {
+            currentCharFun = cbfun;
+            _SetCharCallback(window, currentCharFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetCharModsCallback")]
+        private static extern void _SetCharModsCallback(IntPtr window, CharModsFun cbfun);
+
+        private static CharModsFun currentCharModsFun;
+
         [Obsolete]
-        public static extern void SetCharModsCallback(IntPtr window, CharModsFun cbfun);
+        public static void SetCharModsCallback(IntPtr window, CharModsFun cbfun)
+        {
+            currentCharModsFun = cbfun;
+            _SetCharModsCallback(window, currentCharModsFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetMouseButtonCallback")]
-        public static extern void SetMouseButtonCallback(IntPtr window, MouseButtonFun cbfun);
+        private static extern void _SetMouseButtonCallback(IntPtr window, MouseButtonFun cbfun);
+
+        private static MouseButtonFun currentMouseButtonFun;
+
+        public static void SetMouseButtonCallback(IntPtr window, MouseButtonFun cbfun)
+        {
+            currentMouseButtonFun = cbfun;
+            _SetMouseButtonCallback(window, currentMouseButtonFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetCursorPosCallback")]
-        public static extern void SetCursorPosCallback(IntPtr window, CursorPosFun cbfun);
+        private static extern void _SetCursorPosCallback(IntPtr window, CursorPosFun cbfun);
+
+        private static CursorPosFun currentCursorPosFun;
+
+        public static void SetCursorPosCallback(IntPtr window, CursorPosFun cbfun)
+        {
+            currentCursorPosFun = cbfun;
+            _SetCursorPosCallback(window, currentCursorPosFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetCursorEnterCallback")]
-        public static extern void SetCursorEnterCallback(IntPtr window, CursorEnterFun cbfun);
+        private static extern void _SetCursorEnterCallback(IntPtr window, CursorEnterFun cbfun);
+
+        private static CursorEnterFun currentCursorEnterFun;
+
+        public static void SetCursorEnterCallback(IntPtr window, CursorEnterFun cbfun)
+        {
+            currentCursorEnterFun = cbfun;
+            _SetCursorEnterCallback(window, currentCursorEnterFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetScrollCallback")]
-        public static extern void SetScrollCallback(IntPtr window, ScrollFun cbfun);
+        private static extern void _SetScrollCallback(IntPtr window, ScrollFun cbfun);
+
+        private static ScrollFun currentScrollFun;
+
+        public static void SetScrollCallback(IntPtr window, ScrollFun cbfun)
+        {
+            currentScrollFun = cbfun;
+            _SetScrollCallback(window, currentScrollFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetDropCallback")]
         private static extern void _SetDropCallback(IntPtr window, UnmanagedDropFun cbfun);
@@ -953,10 +1064,26 @@ namespace glfw3
         public static extern void SetWindowAttrib(IntPtr window, int attrib, int value);
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowMaximizeCallback")]
-        public static extern void SetWindowMaximizeCallback(IntPtr window, WindowMaximizeFun cbfun);
+        private static extern void _SetWindowMaximizeCallback(IntPtr window, WindowMaximizeFun cbfun);
+
+        private static WindowMaximizeFun currentWindowMaximizeFun;
+
+        public static void SetWindowMaximizeCallback(IntPtr window, WindowMaximizeFun cbfun)
+        {
+            currentWindowMaximizeFun = cbfun;
+            _SetWindowMaximizeCallback(window, currentWindowMaximizeFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwSetWindowContentScaleCallback")]
-        public static extern void SetWindowContentScaleCallback(IntPtr window, WindowContentScaleFun cbfun);
+        private static extern void _SetWindowContentScaleCallback(IntPtr window, WindowContentScaleFun cbfun);
+
+        private static WindowContentScaleFun currentWindowContentScaleFun;
+
+        public static void SetWindowContentScaleCallback(IntPtr window, WindowContentScaleFun cbfun)
+        {
+            currentWindowContentScaleFun = cbfun;
+            _SetWindowContentScaleCallback(window, currentWindowContentScaleFun);
+        }
 
         [DllImport(Glfw3Dll, EntryPoint = "glfwRawMouseMotionSupported")]
         public static extern int RawMouseMotionSupported();

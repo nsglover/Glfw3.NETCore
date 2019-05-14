@@ -6,7 +6,7 @@
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>Glfw3.NETCore</PackageId>
-        <PackageVersion>1.0.2.2</PackageVersion>
+        <PackageVersion>1.0.2.3</PackageVersion>
         <Authors>NathanielGlover</Authors>
         <Description>
             Glfw3.NETCore is an up-to-date set of cross-platform C# bindings for GLFW 3 targeting .NET Core 3.0.
